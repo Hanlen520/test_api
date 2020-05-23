@@ -1,7 +1,7 @@
 from pprint import pprint
 
-from test_api.common.common import fake
-from test_api.core.rest_client import RestClient
+# from test_api.common.common import fake
+from core.rest_client import RestClient
 
 """
 用户管理模块api的封装
@@ -111,6 +111,8 @@ class UserManagement(RestClient):
         response = self.put('/user/services/rest/user/Nickname?serino=63 ', json=json)
 
         return response
+
+
 
 
 usermanagement = UserManagement()

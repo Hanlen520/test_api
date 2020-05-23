@@ -1,11 +1,11 @@
 import time
-from pprint import pprint
+
 
 import allure
 import pytest
-from test_api.api.usermanagement import usermanagement
+from api.usermanagement import usermanagement
 import warnings
-from test_api.Logs.logs import logging
+from Logs.logs import logging
 
 warnings.simplefilter("ignore", ResourceWarning)
 
@@ -21,7 +21,7 @@ class Test_Usermanagement():
         usermanagement.Institutional_information_get()
         groupid = usermanagement.response_json['institution']['groupId']
         usermanagement.groupid = groupid  # 将groupid添加到属性里
-        logging.error(usermanagement.url+str(usermanagement.header_print) + str(usermanagement.response_json))
+        logging.error(usermanagement.url + str(usermanagement.header_print) + str(usermanagement.response_json))
         assert usermanagement.response_json['code'] == '0'
 
     def test_Obtaining_Institutional_Configuration_Information(self):
@@ -119,7 +119,6 @@ class Test_Usermanagement():
     def test_get_the_user_list_4(self):
         usermanagement.get_the_user_list(usermanagement.groupid)
         assert usermanagement.user_total == int(usermanagement.response_json['total']), "删除用户之后获取用户，列表"
-
 
 
 if __name__ == '__main__':
